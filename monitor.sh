@@ -32,3 +32,6 @@ inotifywait -m -e create -e modify -e delete --format '%T %:e %f' --timefmt '%F 
         LASTMODFILE=""
     fi
 done &
+
+# Run the app.js script
+node /var/www/html/app.js
