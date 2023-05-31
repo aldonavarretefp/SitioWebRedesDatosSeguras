@@ -23,7 +23,7 @@ const fechaHoraModificacion = match ? match[1] : null;
 /* Expresión regular para tomar el nombre de la imágen, puede contener guiones bajos, guiones, formatos gif, png, jpg y jpeg */
 
 // const regexImg = /\/([a-zA-Z0-9-_]+.(gif|png|jpg|jpeg))/;
-const regexImg = /(\w[a-zA-Z0-9-_]+\.(?:jpg|png|gif))/;
+const regexImg = /([A-Za-z0-9-_]+\.(?:jpg|png|gif))/;
 const matchImg = ultimaLinea.match(regexImg);
 const nombreImagen = matchImg ? matchImg[1] : null;
 const archivoHTML = fs.readFileSync('index.html', 'utf-8');
