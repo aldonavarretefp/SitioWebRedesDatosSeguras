@@ -5,6 +5,7 @@ const lineas = contenidoLog.split('\n');
 console.log(lineas)
 /* Buscamos la última línea que no sea de Zone.Identifier o que sea una línea vacía*/
 let ultimaLinea;
+let nombreImagen;
 for (let i = lineas.length - 1; i >= 0; i--) {
   const linea = lineas[i].trim();
   if (linea == '') {
@@ -12,6 +13,8 @@ for (let i = lineas.length - 1; i >= 0; i--) {
   }
   if (!linea.endsWith('Zone.Identifier')) {
     ultimaLinea = linea;
+    const palabras = linea.split(' ');
+    nombreImagen = palabras[palabras.length - 1];
     break;
   }
 }
@@ -25,7 +28,7 @@ const fechaHoraModificacion = match ? match[1] : null;
 // const regexImg = /\/([a-zA-Z0-9-_]+.(gif|png|jpg|jpeg))/;
 const regexImg = /([A-Za-z0-9-_]+\.(?:jpg|png|gif))/;
 const matchImg = ultimaLinea.match(regexImg);
-const nombreImagen = matchImg ? matchImg[1] : null;
+// const nombreImagen = matchImg ? matchImg[1] : null;
 const archivoHTML = fs.readFileSync('index.html', 'utf-8');
 
 /* Modificamos el HTML */
