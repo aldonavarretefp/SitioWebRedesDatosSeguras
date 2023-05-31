@@ -2,11 +2,14 @@ const fs = require('fs');
 
 const contenidoLog = fs.readFileSync('registro.log', 'utf-8');
 const lineas = contenidoLog.split('\n');
-
-/* Buscamos la última línea que no sea de Zone.Identifier */
+console.log(lineas)
+/* Buscamos la última línea que no sea de Zone.Identifier o que sea una línea vacía*/
 let ultimaLinea;
 for (let i = lineas.length - 1; i >= 0; i--) {
   const linea = lineas[i].trim();
+  if (linea == '') {
+    continue;
+  }
   if (!linea.endsWith('Zone.Identifier')) {
     ultimaLinea = linea;
     break;
