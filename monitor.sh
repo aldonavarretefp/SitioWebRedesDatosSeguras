@@ -12,7 +12,7 @@ LASTMODFILE=""
 # Monitor the directory for create, modify and delete events
 inotifywait -m -e create -e modify -e delete --format '%T %:e %f' --timefmt '%F %T' "$DIR" | while read -r LINE; do
     # Parse the line into timestamp, event and file
-    TIMESTAMP=$(echo "$LINE" | cut -d ' ' -f 2)
+    TIMESTAMP=$(echo "$LINE" | cut -d ' ' -f 2 )
     EVENT=$(echo "$LINE" | cut -d ' ' -f 3)
     FILE=$(echo "$LINE" | cut -d ' ' -f 4)
 
@@ -22,8 +22,9 @@ inotifywait -m -e create -e modify -e delete --format '%T %:e %f' --timefmt '%F 
         continue
     fi
 
+    UTC = " (UTC)"
     # Write the line to the output file
-    echo "$LINE" >> "$OUTFILE"
+    echo "$LINE$UTC" >> "$OUTFILE"
 
     # Update last modified file
     if [ "$EVENT" = "MODIFY" ]; then

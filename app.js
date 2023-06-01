@@ -22,7 +22,6 @@ for (let i = lineas.length - 1; i >= 0; i--) {
 const regex = /^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/;
 const match = ultimaLinea.match(regex);
 const fechaHoraModificacion = match ? match[1] : null;
-
 /* Expresión regular para tomar el nombre de la imágen, puede contener guiones bajos, guiones, formatos gif, png, jpg y jpeg */
 
 // const regexImg = /\/([a-zA-Z0-9-_]+.(gif|png|jpg|jpeg))/;
@@ -38,7 +37,7 @@ const imagen = $('img');
 const h1 = $('h1');
 
 imagen.attr('src', "/images/" + nombreImagen);
-h1.text(`Última modificación: ${fechaHoraModificacion}`);
+h1.text(`Última modificación: ${fechaHoraModificacion} (UTC)`);
 
 fs.writeFileSync('index.html', $.html());
 
