@@ -37,7 +37,7 @@ const imagen = $('img');
 const h1 = $('h1');
 
 imagen.attr('src', "/images/" + nombreImagen);
-h1.text(`Última modificación: ${fechaHoraModificacion} (UTC)`);
+h1.text(`Última modificación: ${fechaHoraModificacion} (CST)`);
 
 fs.writeFileSync('index.html', $.html());
 

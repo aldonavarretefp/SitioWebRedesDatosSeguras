@@ -22,9 +22,8 @@ inotifywait -m -e create -e modify -e delete --format '%T %:e %f' --timefmt '%F 
         continue
     fi
 
-    UTC = " (UTC)"
     # Write the line to the output file
-    echo "$LINE$UTC" >> "$OUTFILE"
+    echo "$LINE" >> "$OUTFILE"
 
     # Update last modified file
     if [ "$EVENT" = "MODIFY" ]; then
